@@ -8,11 +8,11 @@ export class MapHelperService {
 
   public map;
   //map:any;
-  markers:{};
+  marks:{};
   
 
    initMap(){
-  this.map = L.map('map', {
+   this.map = L.map('map', {
   'center': [24.867268, 67.075466],
   'zoom': 13,
   'layers': [
@@ -21,21 +21,22 @@ export class MapHelperService {
     })
   ]
 });
-          
-   } 
+
+} 
 
 
 
-  setMarkers(data) {
-   
+setMarkers(data) {
+  var markers={};
   let self=this;
   data.points.forEach(function (obj) {
-    if (!this.markers.hasOwnProperty(obj.id)) {
-      this.markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
-      this.markers[obj.id].previousLatLngs = [];
+    console.log(obj)
+    if (!markers.hasOwnProperty(obj.id)) {
+      markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
+      markers[obj.id].previousLatLngs = [];
     } else {
-     this.markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
-     this.markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
+     markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
+     markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
     }
   });
 }

@@ -42,35 +42,35 @@ this.geoPoints = geo.points;
 self.helper.drawPoints(geo);
 self.helper.setMarkers(geo);
 
-// setTimeout(function(){
-//   self.geoPoints.push({
+setTimeout(function(){
+  self.geoPoints.push({
             
-//                   "type": "person",
-//                   "pos": {
-//                       "lat": 24.863668,
-//                       "lon": 67.07547
-//                   },
-//                   "data": {
-//                   }
-//           // "type": "flight",
-//           // "pos": {
-//           //   "src": {
-//           //     "lat": 24.867406, 
-//           //     "lon": 67.077427
-//           //   },
-//           //   "dest": {
-//           //     "lat":24.860257 ,
-//           //     "lon": 67.069174
-//           //   }
-//           // },
-//           // "data": {
-//           // }
-//         })
+                  "type": "person",
+                  "pos": {
+                      "lat": 24.863668,
+                      "lon": 67.07547
+                  },
+                  "data": {
+                  }
+          // "type": "flight",
+          // "pos": {
+          //   "src": {
+          //     "lat": 24.867406, 
+          //     "lon": 67.077427
+          //   },
+          //   "dest": {
+          //     "lat":24.860257 ,
+          //     "lon": 67.069174
+          //   }
+          // },
+          // "data": {
+          // }
+        })
         
-//          self.helper.drawPoints(geo);
+         self.helper.setMarkers(geo);
         
          
-//         },2000)
+        },2000)
      
 // setTimeout(function(){self.geoPoints.push({
   
