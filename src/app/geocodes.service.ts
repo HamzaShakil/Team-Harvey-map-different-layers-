@@ -9,15 +9,16 @@ export class GeocodesService {
   getPositions():Observable<any>{
       return Observable.of({
         points:[
-            // {
-            //       "type": "person",
-            //       "pos": {
-            //           "lon": -95.3676974,
-            //           "lat": 29.7589382
-            //       },
-            //       "data": {
-            //       }
-            // },
+            {
+                  "type": "person",
+                  "pos": {
+                      "id":'A',
+                      "lat": 24.867268, 
+                      "lon":  67.075466
+                  },
+                  "data": {
+                  }
+            },
             // {
             //       "type": "person",
             //       "pos": {

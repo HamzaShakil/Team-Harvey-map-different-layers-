@@ -7,83 +7,102 @@ import L from 'leaflet'
 export class MapHelperService {
 
   public map;
-  myCoordinates:any[];
-  feature = 'Feature 1'
-
-  selectedFeatures: any = [];
+  //map:any;
+  markers:{};
+  
 
    initMap(){
-     this.map = new L.Map("map");
-     this.map.setView(new L.LatLng(24.863833, 67.069553), 15);
-     L.tileLayer(`https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png`, {
-             maxZoom: 20,
-             
-             
-
-          }).addTo(this.map);
+  this.map = L.map('map', {
+  'center': [24.867268, 67.075466],
+  'zoom': 13,
+  'layers': [
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+    })
+  ]
+});
           
    } 
 
-  
-    
+
+
+  setMarkers(data) {
+   
+  let self=this;
+  data.points.forEach(function (obj) {
+    if (!this.markers.hasOwnProperty(obj.id)) {
+      this.markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
+      this.markers[obj.id].previousLatLngs = [];
+    } else {
+     this.markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
+     this.markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
+    }
+  });
+}
    drawPoints(data){
       // points
-     let self=this;
     
-      data.points.forEach(p=>
-      {
-        this.addMarker(p.pos.lat, p.pos.lon);
-        this.selectedFeatures.push({"lat":p.pos.lat,"lon":p.pos.lon});
+  //   // let self=this;
+  //   // data.Points.forEach(function (obj) {
+    
+  //   // if (!this.markers.hasOwnProperty(obj.id)) {
+  //   //   this.markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
+  //   //   this.markers[obj.id].previousLatLngs = [];
+  //   // } else {
+  //   //   this.markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
+  //   //   this.markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
+  //   // }
+  // });
+}
+      // data.points.forEach(p=>
+      // {
+      //   this.addMarker(p.pos.lat, p.pos.lon);
+      //   this.selectedFeatures.push({"lat":p.pos.lat,"lon":p.pos.lon});
        
       
         
        
         
-      },
-      this.addPolyline(this.selectedFeatures)
-      );
+      // },
+      // this.addPolyline(this.selectedFeatures)
+      // );
     
      
     
      
       // lines
-      data.lines.forEach(l=>{
-        this.addMarker(l.pos.src.lat, l.pos.src.lon);
-        // dest
-        this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
-        // line       
-        this.addLine(l.pos.src, l.pos.dest);   
-        // if(l.type=="temp")
-        // {
-        //   console.log(l.type);
-        //   this.addCircle(l.pos.src,l.pos.dest);
-        //   this.addLine(l.pos.src, l.pos.dest);
-        // }
-        // else
-        // {
-        //    // src
-        // this.addMarker(l.pos.src.lat, l.pos.src.lon);
-        // // dest
-        // this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
-        // // line       
-        // this.addLine(l.pos.src, l.pos.dest);        
+      // data.lines.forEach(l=>{
+      //   this.addMarker(l.pos.src.lat, l.pos.src.lon);
+      //   // dest
+      //   this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
+      //   // line       
+      //   this.addLine(l.pos.src, l.pos.dest);   
+      //   // if(l.type=="temp")
+      //   // {
+      //   //   console.log(l.type);
+      //   //   this.addCircle(l.pos.src,l.pos.dest);
+      //   //   this.addLine(l.pos.src, l.pos.dest);
+      //   // }
+      //   // else
+      //   // {
+      //   //    // src
+      //   // this.addMarker(l.pos.src.lat, l.pos.src.lon);
+      //   // // dest
+      //   // this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
+      //   // // line       
+      //   // this.addLine(l.pos.src, l.pos.dest);        
 
-        // }
+      //   // }
             
-      });
-      console.log(this.selectedFeatures)
-   }
+      // });
+      
+   
 
   //  cordinates(cordinates)
   //  {
 
   //  }
-  addPolyline(selectedFeatures)
-  {
-    
-
-  }
-   addMarker(lat,lng){
+    addMarker(lat,lng){
     var x = lat
     var y=lng,
     toString = x.toString(),

@@ -40,92 +40,88 @@ this.geoPoints = geo.points;
 //this.myCoordinates.push();
 
 self.helper.drawPoints(geo);
+self.helper.setMarkers(geo);
 
-
-setTimeout(function(){
-  geo.lines.forEach(l=>{
-  let x=l.pos.dest
-  
-});
-  self.geoPoints.push({
+// setTimeout(function(){
+//   self.geoPoints.push({
             
-                  "type": "person",
-                  "pos": {
-                      "lat": 24.863668,
-                      "lon": 67.07547
-                  },
-                  "data": {
-                  }
-          // "type": "flight",
-          // "pos": {
-          //   "src": {
-          //     "lat": 24.867406, 
-          //     "lon": 67.077427
-          //   },
-          //   "dest": {
-          //     "lat":24.860257 ,
-          //     "lon": 67.069174
-          //   }
-          // },
-          // "data": {
-          // }
-        })
+//                   "type": "person",
+//                   "pos": {
+//                       "lat": 24.863668,
+//                       "lon": 67.07547
+//                   },
+//                   "data": {
+//                   }
+//           // "type": "flight",
+//           // "pos": {
+//           //   "src": {
+//           //     "lat": 24.867406, 
+//           //     "lon": 67.077427
+//           //   },
+//           //   "dest": {
+//           //     "lat":24.860257 ,
+//           //     "lon": 67.069174
+//           //   }
+//           // },
+//           // "data": {
+//           // }
+//         })
         
-         self.helper.drawPoints(geo);
+//          self.helper.drawPoints(geo);
         
          
-        },2000)
+//         },2000)
      
-setTimeout(function(){self.geoPoints.push({
+// setTimeout(function(){self.geoPoints.push({
   
-          "type": "person",
-                  "pos": {
-                      "lat": 24.862539,
-                      "lon": 67.069709
-                  },
-                  "data": {
-                  }
-        })
+//           "type": "person",
+//                   "pos": {
+//                       "lat": 24.862539,
+//                       "lon": 67.069709
+//                   },
+//                   "data": {
+//                   }
+//         })
         
         
-        self.helper.drawPoints(geo);
+//         self.helper.drawPoints(geo);
       
-         }, 4000);
-         setTimeout(function(){self.geoPoints.push({
+//          }, 4000);
+//          setTimeout(function(){self.geoPoints.push({
   
-          "type": "person",
-                  "pos": {
-                      "lat": 24.859164,
-                      "lon": 67.069747
-                  },
-                  "data": {
-                  }
-        })
+//           "type": "person",
+//                   "pos": {
+//                       "lat": 24.859164,
+//                       "lon": 67.069747
+//                   },
+//                   "data": {
+//                   }
+//         })
         
         
-        self.helper.drawPoints(geo);
+//         self.helper.drawPoints(geo);
        
-       // this.Coordinates.push(self.geoLines);
-         }, 6000);
+//        // this.Coordinates.push(self.geoLines);
+//          }, 6000);
          
   
-  setTimeout(function(){self.geoPoints.push({
+//   setTimeout(function(){self.geoPoints.push({
   
-          "type": "person",
-                  "pos": {
-                      "lat": 24.874806,
-                      "lon": 67.068062
-                  },
-                  "data": {
-                  }
-        })
+//           "type": "person",
+//                   "pos": {
+//                       "lat": 24.874806,
+//                       "lon": 67.068062
+//                   },
+//                   "data": {
+//                   }
+//         })
         
         
-        self.helper.drawPoints(geo);
+//         self.helper.drawPoints(geo);
        
      
 
-         }, 8000);
+//          }, 8000);
          
     })
 
