@@ -20,6 +20,7 @@ export class MapComponent implements OnChanges, AfterViewInit {
   ngAfterViewInit() {
     this.helper.initMap();
     this.geo.getPositions().subscribe(geo=>{
+      
       console.log(`lll`)
       this.helper.drawPoints(geo)
     })

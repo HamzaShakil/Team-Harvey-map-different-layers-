@@ -10,10 +10,10 @@ export class MapHelperService {
 
    initMap(){
      this.map = new L.Map("map");
-     this.map.setView(new L.LatLng(31.585692323629303, 35.19333585601518), 5);
+     this.map.setView(new L.LatLng(24.8607, 67.0011), 15);
      L.tileLayer(`https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png`, {
              maxZoom: 20,
-             attribution: 'HOT',
+             
              
 
           }).addTo(this.map);
@@ -24,16 +24,37 @@ export class MapHelperService {
       // data.points.forEach(p=>this.addMarker(p.pos.lat, p.pos.lon));
       // lines
       data.lines.forEach(l=>{
-        // src
         this.addMarker(l.pos.src.lat, l.pos.src.lon);
         // dest
         this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
         // line       
-        this.addLine(l.pos.src, l.pos.dest);             
+        this.addLine(l.pos.src, l.pos.dest);   
+        // if(l.type=="temp")
+        // {
+        //   console.log(l.type);
+        //   this.addCircle(l.pos.src,l.pos.dest);
+        //   this.addLine(l.pos.src, l.pos.dest);
+        // }
+        // else
+        // {
+        //    // src
+        // this.addMarker(l.pos.src.lat, l.pos.src.lon);
+        // // dest
+        // this.addMarker(l.pos.dest.lat, l.pos.dest.lon);
+        // // line       
+        // this.addLine(l.pos.src, l.pos.dest);        
+
+        // }
+            
       });
    }
    addMarker(lat,lng){
-    let m = L.marker([lat,lng]).addTo(this.map);
+    var x = lat
+    var y=lng,
+    toString = x.toString(),
+    toString= y.toString(),
+    toConcat = "Lat: "+x+" "+ "long: "+y;
+    let m = L.marker([lat,lng]).addTo(this.map).bindPopup(toConcat);
    }
    addLine(src, dest) {
          let line = L.polyline(
@@ -42,6 +63,30 @@ export class MapHelperService {
                     [dest.lat, dest.lon]
                 ],
                 {color: 'red'}
+         ).addTo(this.map)
+   }
+   addCircle(src, dest) {
+         let cricleSrc = L.circle(
+                
+                    [src.lat, src.lon],
+                    {
+                     radius: 500,
+                     color: "red",
+                     fillColor: "#f03",
+                     fillOpacity: 0.5
+                     
+                    }
+         ).addTo(this.map)
+         let cricleDest = L.circle(
+                
+                    [dest.lat, dest.lon],
+                    {
+                     radius: 500,
+                     color: "green",
+                     fillColor: "#f03",
+                     fillOpacity: 0.5
+                     
+                    }
          ).addTo(this.map)
    }
 
