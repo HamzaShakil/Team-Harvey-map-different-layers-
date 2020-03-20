@@ -35,7 +35,7 @@ setMarkers(data) {
       markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
       markers[obj.id].previousLatLngs = [];
     } else {
-     markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
+     markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());
      markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
     }
   });
