@@ -7,10 +7,14 @@ import L from 'leaflet'
 export class MapHelperService {
 
   public map;
+  myCoordinates:any[];
+  feature = 'Feature 1'
+
+  selectedFeatures: any = [];
 
    initMap(){
      this.map = new L.Map("map");
-     this.map.setView(new L.LatLng(24.8607, 67.0011), 15);
+     this.map.setView(new L.LatLng(24.863833, 67.069553), 15);
      L.tileLayer(`https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png`, {
              maxZoom: 20,
              
@@ -19,9 +23,29 @@ export class MapHelperService {
           }).addTo(this.map);
           
    } 
+
+  
+    
    drawPoints(data){
       // points
-      // data.points.forEach(p=>this.addMarker(p.pos.lat, p.pos.lon));
+     let self=this;
+    
+      data.points.forEach(p=>
+      {
+        this.addMarker(p.pos.lat, p.pos.lon);
+        this.selectedFeatures.push({"lat":p.pos.lat,"lon":p.pos.lon});
+       
+      
+        
+       
+        
+      },
+      this.addPolyline(this.selectedFeatures)
+      );
+    
+     
+    
+     
       // lines
       data.lines.forEach(l=>{
         this.addMarker(l.pos.src.lat, l.pos.src.lon);
@@ -47,7 +71,18 @@ export class MapHelperService {
         // }
             
       });
+      console.log(this.selectedFeatures)
    }
+
+  //  cordinates(cordinates)
+  //  {
+
+  //  }
+  addPolyline(selectedFeatures)
+  {
+    
+
+  }
    addMarker(lat,lng){
     var x = lat
     var y=lng,
