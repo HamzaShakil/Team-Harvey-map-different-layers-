@@ -14,8 +14,8 @@ export class MapHelperService {
 
    initMap(){
 this.map = L.map('map', {
-  'center': [0,0],//[24.867268, 67.075466],
-  'zoom': 0,
+  'center': [51.512802,-0.091324],//[24.867268, 67.075466],
+  'zoom': 13,
   'layers': [
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'

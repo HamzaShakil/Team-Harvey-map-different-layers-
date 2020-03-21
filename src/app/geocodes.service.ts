@@ -12,24 +12,19 @@ export class GeocodesService {
         "Points":[
             {
                   "type": "person",
-                  "pos": {
-                   
-                  },
+                 
                      "id":'A',
-                      "lat": -95.3676974,
-                      "lon": 29.7589382,
-                  "data": {
-                  }
+                      "lat":51.51324,
+                      "lon":-0.09909000000000001,
+                  
             },
             {
                   "type": "person",
-                  "pos": {
-                     
-                  },
+                 
                    "id":'B',
-                      "lat": 35.1490215,
-                      "lon": -90.0516285,
-                  "data": {}
+                      "lat": 51.51478 ,
+                      "lon":-0.08078,
+                 
             },
             // {
             //       "type": "person",
