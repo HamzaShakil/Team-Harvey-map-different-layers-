@@ -31,46 +31,70 @@ var self = this;
 
 this.geo.getPositions().subscribe(geo=>{
 this.geoPoints = geo.points;
-
-// geo.lines.forEach(l=>{
-//   let x=l.pos.dest
-//   console.log(l.pos.dest)
-// });
-//console.log(geo.points)
-//this.myCoordinates.push();
-
-self.helper.drawPoints(geo);
 self.helper.setMarkers(geo);
-
-setTimeout(function(){
-  self.geoPoints.push({
-            
+setTimeout(function()
+{
+  self.helper.setMarkers(
+  {
+     "Points":[
+            {
                   "type": "person",
-                  "pos": {
-                      "lat": 24.863668,
-                      "lon": 67.07547
-                  },
+                   "id":'A',
+                      "lat": 34.1083449,
+                      "lon": -117.2897652,
                   "data": {
                   }
-          // "type": "flight",
-          // "pos": {
-          //   "src": {
-          //     "lat": 24.867406, 
-          //     "lon": 67.077427
-          //   },
-          //   "dest": {
-          //     "lat":24.860257 ,
-          //     "lon": 67.069174
-          //   }
-          // },
-          // "data": {
-          // }
-        })
+            }
+     ]
+    //  "Points":[
+    //    {
+    //        "pos":{
+    //            "id": 'B',
+    //            "lat": 48 ,
+    //            "long": 48
+            
+    //         }
+    //    }
+          
+    //  ]
+
+
+
+
+  });
+
+},2000)
+
+// setTimeout(function(){
+//   self.geoPoints.push({
+            
+//                   "type": "person",
+//                   "pos": {
+//                       "id":'B',
+//                       "lat":48, //24.863668,
+//                       "lon":48 //67.07547
+//                   },
+//                   "data": {
+//                   }
+//           // "type": "flight",
+//           // "pos": {
+//           //   "src": {
+//           //     "lat": 24.867406, 
+//           //     "lon": 67.077427
+//           //   },
+//           //   "dest": {
+//           //     "lat":24.860257 ,
+//           //     "lon": 67.069174
+//           //   }
+//           // },
+//           // "data": {
+//           // }
+//         })
         
-         self.helper.setMarkers(geo);
+//          self.helper.setMarkers(geo);
         
          
-        },2000)
+//         },2000)
      
 // setTimeout(function(){self.geoPoints.push({
   

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+var markers={};
 
 import L from 'leaflet'
 @Injectable()
@@ -8,13 +9,13 @@ export class MapHelperService {
 
   public map;
   //map:any;
-  marks:{};
+
   
 
    initMap(){
-   this.map = L.map('map', {
-  'center': [24.867268, 67.075466],
-  'zoom': 13,
+this.map = L.map('map', {
+  'center': [0,0],//[24.867268, 67.075466],
+  'zoom': 0,
   'layers': [
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
@@ -26,48 +27,31 @@ export class MapHelperService {
 
 
 
-setMarkers(data) {
-  var markers={};
+
+   drawPoints(data){
+   data.points.forEach(p=>
+      {
+        this.addMarker(p.pos.lat, p.pos.lon);
+      },
+      
+      );
+}
+      
+ setMarkers(data) {
+ 
   let self=this;
-  data.points.forEach(function (obj) {
-    console.log(obj)
+  
+   data.Points.forEach(function (obj) {
+   
     if (!markers.hasOwnProperty(obj.id)) {
-      markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
+      markers[obj.id] = new L.Marker([obj.lat, obj.lon]).addTo(self.map);
       markers[obj.id].previousLatLngs = [];
     } else {
-     markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());
-     markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
+      markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());
+      markers[obj.id].setLatLng([obj.lat, obj.lon]);
     }
   });
-}
-   drawPoints(data){
-      // points
-    
-  //   // let self=this;
-  //   // data.Points.forEach(function (obj) {
-    
-  //   // if (!this.markers.hasOwnProperty(obj.id)) {
-  //   //   this.markers[obj.id] = new L.Marker([obj.pos.lat, obj.pos.lon]).addTo(self.map);
-  //   //   this.markers[obj.id].previousLatLngs = [];
-  //   // } else {
-  //   //   this.markers[obj.id].previousLatLngs.push(this.markers[obj.id].getLatLng());
-  //   //   this.markers[obj.id].setLatLng([obj.pos.lat, obj.pos.lon]);
-  //   // }
-  // });
-}
-      // data.points.forEach(p=>
-      // {
-      //   this.addMarker(p.pos.lat, p.pos.lon);
-      //   this.selectedFeatures.push({"lat":p.pos.lat,"lon":p.pos.lon});
-       
-      
-        
-       
-        
-      // },
-      // this.addPolyline(this.selectedFeatures)
-      // );
-    
+}   
      
     
      
