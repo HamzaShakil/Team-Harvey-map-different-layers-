@@ -31,14 +31,16 @@ export class MapHelperService {
 
   drawPolylines() {
     let self=this;
-latlngs = [
-    [51.51324, -0.09909000000000001],
-    [51.513580000000005, -0.09634000000000001],
-    [51.513720000000006, -0.09638000000000001]
-];
-var polyline = L.polyline(latlngs, {color: 'red'}).addTo(self.map);
-// zoom the map to the polyline
-self.map.fitBounds(polyline.getBounds());}
+    
+  }
+// latlngs = [
+//     [51.51324, -0.09909000000000001],
+//     [51.513580000000005, -0.09634000000000001],
+//     [51.513720000000006, -0.09638000000000001]
+// ];
+// var polyline = L.polyline(latlngs, {color: 'red'}).addTo(self.map);
+// // zoom the map to the polyline
+// self.map.fitBounds(polyline.getBounds());}
 
   setMarkers(data) {
 
@@ -54,6 +56,10 @@ self.map.fitBounds(polyline.getBounds());}
         markers[obj.id].previousLatLngs.push(markers[obj.id].getLatLng());
         markers[obj.id].setLatLng([obj.lat, obj.lon]);
         polyline.push(obj.lat, obj.lon);
+        var myPolyline = L.polyline([
+	      [51.51324, -0.09909000000000001],[51.51478, -0.08078]]).addTo(self.map).bindPopup("popup").openPopup();
+        
+        myPolyline.addLatLng(markers[obj.id].getLatLng());
         // let setpolyline=L.polyline(polyline, {color: 'red'}).addTo(self.map)
         console.log(polyline)
         self.drawPolylines();
